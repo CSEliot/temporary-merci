@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     
     // System
     private Quaternion targetRotation;
-    private Camera camedra = GameObject.Find("Main Camera").GetComponent(Camera);
     private Vector3 mousePos;
     private Vector3 worldPos;
 
@@ -28,26 +27,18 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
     void Update(){
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
-        /*
+        worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPos = worldPos.normalized;
+        input = new Vector3(worldPos.x, 0, worldPos.z);//Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        
         if (input != Vector3.zero)
         {
             targetRotation = Quaternion.LookRotation(input);
             transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
-        }*/
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("MOUSE DOWN");
-            worldPos = camera.ScreenToWorldPoint(Input.mousePosition);
-            worldPos.y = 0;
-            targetRotation = Quaternion.LookRotation(worldPos);
-            transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
         }
 
-        Vector3 motion = worldPos;
-        motion += Vector3.up * -8;
+        Vector3 motion = input;
+        motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
 
         if (motion.magnitude == 8) //8 means that only gravity is pulling down, aka no movement elsewhere.
         {
