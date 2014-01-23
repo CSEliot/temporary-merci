@@ -40,16 +40,13 @@ public class PlayerController : MonoBehaviour {
         }
         if(moving)
         {
-            Debug.Log(Input.mousePosition);
             mousePos = Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2, 0);
-            Debug.Log(mousePos);
             //worldPos = Camera.main.ScreenToWorldPoint(mousePos);
             //worldPos = worldPos.normalized;
             //Debug.Log(worldPos);
             mouseMag = Mathf.Sqrt(Mathf.Pow(mousePos.x, 2) + Mathf.Pow(mousePos.y, 2));
             // Turning mouse pos into a unit vector.
             mousePos = mousePos / mouseMag;
-            Debug.Log(mousePos); Debug.Log(mousePos.magnitude);
             input.Set(mousePos.x, 0, mousePos.y);//Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
             
@@ -64,7 +61,6 @@ public class PlayerController : MonoBehaviour {
         }
         if (input != Vector3.zero)
         {
-            Debug.Log("ROTATING");
             targetRotation = Quaternion.LookRotation(input);
             transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
         }
@@ -75,5 +71,17 @@ public class PlayerController : MonoBehaviour {
 
         controller.Move(motion * Time.deltaTime * walkSpeed);
 
+
+        //END MOVEMENT.
     }
+
+    void OnTriggerEnter(Collider colide)
+    {
+        Debug.Log(" O HI MARK");
+        if (colide.gameObject.tag == "soldierDown")
+        {
+            Debug.Log("COLLIDEEEEE");
+        }
+    }
+
 }

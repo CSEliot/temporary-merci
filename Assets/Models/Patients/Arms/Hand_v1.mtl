@@ -1,0 +1,13 @@
+# Blender MTL File: 'HAND6iso.blend'
+# Material Count: 1
+
+newmtl Material.003
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.288321 0.136039
+Ks 0.172727 0.172727 0.172727
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd hand2.JPG
+map_Bump hand2.JPG
