@@ -3,17 +3,17 @@ using System.Collections;
 [RequireComponent (typeof (CharacterController))]
 public class PlayerController : MonoBehaviour {
     
-    private Vector3 input;
+    private Vector3 input = new Vector3(0,0,0);
     
     // System
     private Quaternion targetRotation;
     private Vector3 mousePos;
     private Vector3 worldPos;
-
+    private float mouseMag;
 
     // Handling Variables
     public float rotationSpeed = 450;
-    public float walkSpeed = 25;
+    public float walkSpeed = 5;
 
     // Components
     private CharacterController controller;
@@ -27,27 +27,36 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
     void Update(){
-        worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        worldPos = worldPos.normalized;
-        input = new Vector3(worldPos.x, 0, worldPos.z);//Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        
-        if (input != Vector3.zero)
+        if (Input.GetMouseButtonDown(0))
         {
-            targetRotation = Quaternion.LookRotation(input);
-            transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
-        }
+            Debug.Log(Input.mousePosition);
+            mousePos = Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            Debug.Log(mousePos);
+            //worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            //worldPos = worldPos.normalized;
+            //Debug.Log(worldPos);
+            mouseMag = Mathf.Sqrt(Mathf.Pow(mousePos.x, 2) + Mathf.Pow(mousePos.y, 2));
+            // Turning mouse pos into a unit vector.
+            mousePos = mousePos / mouseMag;
+            Debug.Log(mousePos); Debug.Log(mousePos.magnitude);
+            input.Set(mousePos.x, 0, mousePos.y);//Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        Vector3 motion = input;
-        motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
-
-        if (motion.magnitude == 8) //8 means that only gravity is pulling down, aka no movement elsewhere.
-        {
-            animator.SetBool("isRunning", false);
-        }
-        else
-        {
+            
             animator.SetBool("isRunning", true);
+
         }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            input.Set(0, 0, 0);
+            animator.SetBool("isRunning", false);
+
+        }
+
+        targetRotation = Quaternion.LookRotation(input);
+        transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
+        
+        Vector3 motion = input;
+        //motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
 
         controller.Move(motion * Time.deltaTime * walkSpeed);
 
