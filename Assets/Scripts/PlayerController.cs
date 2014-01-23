@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 mousePos;
     private Vector3 worldPos;
     private float mouseMag;
+    private bool moving = false;
 
     // Handling Variables
     public float rotationSpeed = 450;
@@ -27,7 +28,17 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
     void Update(){
+
+
         if (Input.GetMouseButtonDown(0))
+        {
+            moving = true;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            moving = false;
+        }
+        if(moving)
         {
             Debug.Log(Input.mousePosition);
             mousePos = Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2, 0);
@@ -45,18 +56,22 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isRunning", true);
 
         }
-        else if(Input.GetMouseButtonUp(0))
+        else if(!moving)
         {
             input.Set(0, 0, 0);
             animator.SetBool("isRunning", false);
 
         }
+        if (input != Vector3.zero)
+        {
+            Debug.Log("ROTATING");
+            targetRotation = Quaternion.LookRotation(input);
+            transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
+        }
 
-        targetRotation = Quaternion.LookRotation(input);
-        transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
-        
+
         Vector3 motion = input;
-        //motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
+        motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
 
         controller.Move(motion * Time.deltaTime * walkSpeed);
 
