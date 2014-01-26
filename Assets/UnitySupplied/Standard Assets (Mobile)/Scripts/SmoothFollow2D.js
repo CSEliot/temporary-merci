@@ -2,7 +2,7 @@
 #pragma strict
 
 var target : Transform;
-var smoothTime = 0.3;
+var smoothTime = 10f; //0.3;
 private var thisTransform : Transform;
 private var velocity : Vector3;
 
