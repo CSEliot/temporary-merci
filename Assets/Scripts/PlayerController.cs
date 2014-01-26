@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour {
     private Vector3 worldPos;
     private float mouseMag;
     private bool moving = false;
+	private GameObject mySoldier; 	
+	private Vector3 camVelocity;
+	private float smoothTime;
+	//private bool isColide = false;
+
 
     // Handling Variables
     public float rotationSpeed = 450;
@@ -19,11 +24,16 @@ public class PlayerController : MonoBehaviour {
     // Components
     private CharacterController controller;
     private Animator animator;
+	private getZoomed zoomIt;
 
     // Use this for initialization
 	void Start () {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+		zoomIt = Camera.main.GetComponent<getZoomed>();
+		if (zoomIt == null) {
+						Debug.Log ("I am null");
+		}
     }
 	
 	// Update is called once per frame
@@ -79,8 +89,14 @@ public class PlayerController : MonoBehaviour {
     {
         Debug.Log(" O HI MARK");
         if (colide.gameObject.tag == "soldierDown")
-        {
-            Debug.Log("COLLIDEEEEE");
+        {	
+
+			Debug.Log("COLLIDEEEEE");
+			zoomIt.testZoom();
+			Debug.Log("COLLIDE222222E");
+			zoomIt.doZoom(colide.gameObject);
+			Debug.Log("zoomdeD");
+			//isColide = true;
         }
     }
 
