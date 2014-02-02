@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour {
         {
             input.Set(0, 0, 0);
             animator.SetBool("isRunning", false);
-
         }
         if (input != Vector3.zero)
         {
