@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\ExGestureObject.cs" />
      <Compile Include="Assets\Scripts\ExTouchManager.cs" />
      <Compile Include="Assets\Scripts\ExTouchObject.cs" />
+     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\cutter_dectector.cs" />
      <Compile Include="Assets\Scripts\getZoomed.cs" />
