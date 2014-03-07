@@ -46,14 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
      <Compile Include="Assets\Scripts\CutDetection.cs" />
-=======
-<<<<<<< HEAD
-=======
-     <Compile Include="Assets\NewBehaviourScript.cs" />
->>>>>>> c8554cae56ac0e90de425f159d6e5c315c3b931b
->>>>>>> efa87c3e93fb4d7df766b69c6e03ad910d1c2e3c
      <Compile Include="Assets\Scripts\ExGestureObject.cs" />
      <Compile Include="Assets\Scripts\ExTouchManager.cs" />
      <Compile Include="Assets\Scripts\ExTouchObject.cs" />
