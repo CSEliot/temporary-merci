@@ -8,7 +8,7 @@ public class IsSwiped : MonoBehaviour {
 	private bool buttonPressed;
 	private float mouseY;
 	private float halfScreen;
-	private bool swiped;
+	public bool swiped;
 
 	// Use this for initialization
 	void Start () {
@@ -42,4 +42,9 @@ public class IsSwiped : MonoBehaviour {
 			inBotHalf = false;
 		}//end if
 	}
+
+    public bool getSwipeBool()
+    {
+        return swiped;
+    }
 }

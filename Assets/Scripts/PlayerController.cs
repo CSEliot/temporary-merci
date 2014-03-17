@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject mySoldier; 	
 	private Vector3 camVelocity;
 	private float smoothTime;
+    private bool canMove = true;
 	//private bool isColide = false;
 
 
@@ -25,12 +26,15 @@ public class PlayerController : MonoBehaviour {
     private CharacterController controller;
     private Animator animator;
 	private getZoomed zoomIt;
+    private IsSwiped swipeDetector;
 
     // Use this for initialization
 	void Start () {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 		zoomIt = Camera.main.GetComponent<getZoomed>();
+        swipeDetector = Camera.main.GetComponent<IsSwiped>();
+
 		if (zoomIt == null) {
 						Debug.Log ("I am null");
 		}
@@ -78,25 +82,34 @@ public class PlayerController : MonoBehaviour {
         Vector3 motion = input;
         motion.Set(motion.x, -8, motion.z); //yay psuedo gravity! 
 
-        controller.Move(motion * Time.deltaTime * walkSpeed);
+        if (canMove)
+        {
+            controller.Move(motion * Time.deltaTime * walkSpeed);
+        }
 
+
+        if (swipeDetector.getSwipeBool())
+        {
+            canMove = true;
+        }
 
         //END MOVEMENT.
     }
 
     void OnTriggerEnter(Collider colide)
     {
-        Debug.Log(" O HI MARK");
+        //Debug.Log(" O HI MARK");
         if (colide.gameObject.tag == "soldierDown")
-        {	
-
-			Debug.Log("COLLIDEEEEE");
-			zoomIt.testZoom();
-			Debug.Log("COLLIDE222222E");
+        {
+            canMove = false;
 			zoomIt.doZoom(colide.gameObject);
-			Debug.Log("zoomdeD");
-			//isColide = true;
         }
+
+    }
+
+    void OnTriggerExit(Collider colide)
+    {
+        zoomIt.unZoom(colide.gameObject);
     }
 
 }
