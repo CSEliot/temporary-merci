@@ -25,18 +25,18 @@ public class PlayerController : MonoBehaviour {
     // Components
     private CharacterController controller;
     private Animator animator;
-	private getZoomed zoomIt;
+	private CameraController zoomIt;
     private IsSwiped swipeDetector;
 
     // Use this for initialization
 	void Start () {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-		zoomIt = Camera.main.GetComponent<getZoomed>();
+		zoomIt = Camera.main.GetComponent<CameraController>();
         swipeDetector = Camera.main.GetComponent<IsSwiped>();
 
 		if (zoomIt == null) {
-						Debug.Log ("I am null");
+			Debug.Log ("I am null");
 		}
     }
 	
@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerExit(Collider colide)
     {
         zoomIt.unZoom(colide.gameObject);
+        Destroy(colide.gameObject);
     }
 
 }
