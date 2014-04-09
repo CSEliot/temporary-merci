@@ -46,14 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AlienTargeted.cs" />
      <Compile Include="Assets\Scripts\AlienTargetingSystem.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CutDetection.cs" />
      <Compile Include="Assets\Scripts\ExGestureObject.cs" />
      <Compile Include="Assets\Scripts\ExTouchManager.cs" />
      <Compile Include="Assets\Scripts\ExTouchObject.cs" />
+     <Compile Include="Assets\Scripts\HumanTargeted.cs" />
      <Compile Include="Assets\Scripts\HumanTargetingSystem.cs" />
      <Compile Include="Assets\Scripts\IsSwiped.cs" />
+     <Compile Include="Assets\Scripts\ListingHumes_Aliens.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow3D.cs" />
      <Compile Include="Assets\UnitySupplied\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
