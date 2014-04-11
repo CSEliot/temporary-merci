@@ -29,7 +29,6 @@ public class HumanTargetingSystem : MonoBehaviour {
             //H_isfighting = false;
             Debug.Log("Resetting Alien Target.");
         }
-
     }
 
     //This function will find a random target from the size, set his targeted up 1
@@ -37,8 +36,9 @@ public class HumanTargetingSystem : MonoBehaviour {
     void chooseRandomTarget()
     {
        Debug.Log("Total Aliens: " + AlienRegiment.Count);
-       int Alientarget = Random.Range(0, AlienRegiment.Count);
-       Debug.Log("Target Human: " + Alientarget);
+       int Alientarget = Random.Range(0, AlienRegiment.Count -1);
+       Debug.Log("Target Alien: " + Alientarget);
+
 
        AlienRegiment[Alientarget].gameObject.GetComponent<AlienTargeted>().Increasetargeted();
        H_isfighting = true;

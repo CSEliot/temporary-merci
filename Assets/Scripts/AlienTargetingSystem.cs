@@ -39,7 +39,7 @@ public class AlienTargetingSystem : MonoBehaviour
     {
 
         Debug.Log("Total Humans: " + HumanRegiment.Count);
-        int Humantarget = Random.Range(0, HumanRegiment.Count);
+        int Humantarget = Random.Range(0, HumanRegiment.Count - 1);
         Debug.Log("Target Human: " + Humantarget);
 
         HumanRegiment[Humantarget].gameObject.GetComponent<HumanTargeted>().Increasetargeted();
