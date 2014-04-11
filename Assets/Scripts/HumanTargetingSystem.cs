@@ -10,9 +10,8 @@ public class HumanTargetingSystem : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //Get the list/vector of aliens. Let's call it alienindex
         H_isfighting = false;
-        AlienRegiment = getAlienRegiment();
+        AlienRegiment = HumanRegiment = GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().getAlienRegiment();
     }
 
     // Update is called once per frame
@@ -24,7 +23,8 @@ public class HumanTargetingSystem : MonoBehaviour {
             H_isfighting = true;
         }
         //This should occur when your target is dead.
-        else if (H_isfighting && true /* Fill in for AlienRegiment[Alientarget].gameObject.GetComponent<???>().Getaliveness();*/)
+        //Stopping a fighting.
+        else if (H_isfighting && true /* Fill in for AlienRegiment[Alientarget].gameObject.GetComponent<HealthBar>().Getaliveness();*/)
         {
             //H_isfighting = false;
             Debug.Log("Resetting Alien Target.");
@@ -45,6 +45,7 @@ public class HumanTargetingSystem : MonoBehaviour {
        Debug.Log("Found an Alien Target.");
     }
 
+    //This finds, gets and returns
     List<Transform> getAlienRegiment(){
         return GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().AlienRegiment;
     }

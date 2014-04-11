@@ -11,7 +11,7 @@ public class AlienTargetingSystem: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         A_isfighting = false;
-        HumanRegiment = getHumanRegiment();
+        HumanRegiment = GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().getSoldierRegiment();
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,7 @@ public class AlienTargetingSystem: MonoBehaviour {
             A_isfighting = true;
         }
         //This should occur when your target is dead.
-        else if (A_isfighting && true /* Fill in for HumanRegiment[Humantarget].gameObject.GetComponent<???>().Getaliveness();*/)
+        else if (A_isfighting && true /* Fill in for HumanRegiment[Humantarget].gameObject.GetComponent<HealthBar>().GetIsAlives();*/)
         {
             //A_isfighting = false;
             Debug.Log("Resetting Human target.");
