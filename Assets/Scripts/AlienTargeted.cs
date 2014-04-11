@@ -17,7 +17,7 @@ public class AlienTargeted : MonoBehaviour
 
     }
 
-
+    //It increases targeted.
     public void Increasetargeted()
     {
         A_istargeted += 1;

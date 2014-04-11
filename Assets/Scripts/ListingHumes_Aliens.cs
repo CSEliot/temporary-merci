@@ -27,4 +27,16 @@ public class ListingHumes_Aliens : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public List<Transform> getAlienRegiment()
+    {
+        return AlienRegiment;
+    }
+
+    public List<Transform> getSoldierRegiment()
+    {
+        return SoldierRegiment;
+    }
+
 }
+

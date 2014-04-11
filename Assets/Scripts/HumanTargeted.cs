@@ -5,6 +5,7 @@ public class HumanTargeted : MonoBehaviour {
 
     public int H_istargeted;
 
+    //It starts off untargeted.
     void Start()
     {
         H_istargeted = 0;
@@ -16,7 +17,7 @@ public class HumanTargeted : MonoBehaviour {
 
     }
 
-
+    //It increases targeted.
     public void Increasetargeted()
     {
         H_istargeted += 1;
