@@ -1,37 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HasWon : MonoBehaviour {
 
-	private GameObject[] soldiers;
+	private List<Transform> soldiers;
 	private int soldiersLeft;
+	private int numHealed;
 	private bool won;
 
 	// Use this for initialization
 	void Start () {
 		//get total number of soldiers
-		soldiers = GameObject.FindGameObjectsWithTag ("soldierDown");
-		soldiersLeft = soldiers.GetLength(0);
+		soldiers = GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().getSoldierRegiment();
+		soldiersLeft = soldiers.Count;
 		won = false;
-
+		numHealed = 0;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//decrease soldiersLeft when a soldier dies/is healed
-		if(/*soldier dies*/){
-			Debug.Log ("died");
-			soldiersLeft--;
-		}
-		else if(/*soldier healed*/){
-			Debug.Log ("healed");
-			soldiersLeft--;
-		}
-
 		if(soldiersLeft == 0){
-			Debug.Log ("won");
-			Application.LoadLevel(/*win screen level*/);
+			if(numHealed == 0){
+				Debug.Log ("lost");
+				//Application.LoadLevel(/*lose screen level*/);
+			}//end if
+			else{
+				Debug.Log ("won");
+				won = true;
+				//Application.LoadLevel(/*win screen level*/);
+			}//end else
 		}//end if
+	}
+
+	//updates upon soldier death. called from an outside class when soldier dies
+	public void soldierDied(){
+		Debug.Log ("died");
+		soldiersLeft--;
+	}
+
+	//updates upon soldier recovery. called from an outside class when soldier is healed
+	public void soldierHealed(){
+		Debug.Log ("healed");
+		soldiersLeft--;
+		numHealed++;
+	}
+
+	public bool getWon(){
+		return won;
 	}
 }
