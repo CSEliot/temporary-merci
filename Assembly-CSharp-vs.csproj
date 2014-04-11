@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DetectWin.cs" />
      <Compile Include="Assets\HasWon.cs" />
      <Compile Include="Assets\Scripts\AlienTargeted.cs" />
      <Compile Include="Assets\Scripts\AlienTargetingSystem.cs" />
