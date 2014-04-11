@@ -11,7 +11,7 @@ public class HumanTargetingSystem : MonoBehaviour {
     void Start()
     {
         H_isfighting = false;
-        AlienRegiment = HumanRegiment = GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().getAlienRegiment();
+        AlienRegiment = GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().getAlienRegiment();
     }
 
     // Update is called once per frame
