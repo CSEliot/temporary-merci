@@ -43,7 +43,9 @@ public class AlienTargetingSystem : MonoBehaviour
         Debug.Log("Target Human: " + Humantarget);
 
         HumanRegiment[Humantarget].gameObject.GetComponent<HumanTargeted>().Increasetargeted();
-        HumanRegiment[Humantarget].gameObject.GetComponent<ShooterController>().setTarget(this.gameObject);
+        //get THIS guy to set his target to that alien.
+        this.gameObject.GetComponent<ShooterController>().setTarget(HumanRegiment[Humantarget].gameObject);
+        //the above tells the human that THIS alien is 
         A_isfighting = true;
         Debug.Log("Found a Human Target.");
     }
