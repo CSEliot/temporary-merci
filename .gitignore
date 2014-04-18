@@ -2,11 +2,14 @@
 # --------------------------
 # Unity3D specific
 #
-**/Library/*
-**/Temp/*
+**/Library
+**/Temp
+**/obj
 **/*.csproj
 **/*.unityproj
 **/*.sln
+**/*.suo
+**/*.apk
 **/*.userprefs
 **/*.pidb
 
