@@ -5,10 +5,10 @@ public class CameraController : MonoBehaviour
 {
     private Vector3 velocity;
     public Transform target;
-    private Transform thisTransform;
+	private Transform thisTransform;
     public float smoothTime;
     private float numTarget;
-    public bool shouldMove = true;
+    private bool shouldMove = true;
     float posX;
     float posZ;
 
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
     public void unZoom(UnityEngine.GameObject myObject)
     {
         //change camera to back above merci
-        thisTransform.position = oldPos;
+        this.transform.position = oldPos;
         //get camera following again
         shouldMove = true;
         //MOVE THE body back up
@@ -74,20 +74,24 @@ public class CameraController : MonoBehaviour
         Debug.Log(myObject.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(1).name);
 
 
-
+		//get arm reference
         Transform arm = myObject.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(1);
+		//get arm location for camera. Due to offset, some manual modifications had to occur.
+		Vector3 armPos = new Vector3(arm.transform.position.x + 9f , arm.transform.position.y + 1f, arm.transform.position.z + 1f);
         //makes arm visible
         arm.GetComponent<SkinnedMeshRenderer>().enabled = true;
 
         //move body out of way
-        Debug.Log(myObject.transform.GetChild(6).name);
+        //Debug.Log("This is the body to move: " + myObject.transform.name);
         //move the body away
-        myObject.transform.GetChild(6).transform.Translate(new Vector3(0, -20f, 0));
+		//Debug.Log("Moving body down"); 
+		//myObject.transform.position =  new Vector3(myObject.transform.position.x , myObject.transform.position.y - 7f, myObject.transform.position.z);
+		arm.transform.position = armPos;
         
         //move camera
-        Vector3 armPos = new Vector3(arm.transform.position.x - 9f, arm.transform.position.y + 2f, arm.transform.position.z);
+		Debug.Log("This position WAS: " + this.transform.position);
         this.transform.position = armPos;
-
+		Debug.Log("This position IS : " + this.transform.position);
         /***while ((thisTransform.position.y >= numTarget+2f))
         {
 

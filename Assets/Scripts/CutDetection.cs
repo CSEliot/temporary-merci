@@ -20,7 +20,7 @@ public class CutDetection : MonoBehaviour {
         Debug.Log(ScreenHeight);
    InTophalf = false;
    InBottomhalf = false;
-   IsCut = false;
+   //IsCut = false;
 	}
 	
 	// Update is called once per frame

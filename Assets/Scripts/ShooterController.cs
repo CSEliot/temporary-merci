@@ -15,7 +15,7 @@ public class ShooterController : MonoBehaviour {
 		newTarget = false;
 	}
 
-	void setTarget(GameObject nTarget){
+	public void setTarget(GameObject nTarget){
 		target = nTarget;
 		newTarget = true;
 	}
