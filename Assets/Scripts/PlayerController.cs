@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 camVelocity;
 	private float smoothTime;
     private bool canMove = true;
+    private bool isNearSoldier = false;
 	//private bool isColide = false;
+    private GameObject latestColide;
 
 
     // Handling Variables
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-		zoomIt = Camera.main.transform.GetComponent<CameraController>();
+		zoomIt = Camera.main.transform.parent.GetComponent<CameraController>();
         swipeDetector = Camera.main.GetComponent<IsSwiped>();
 
 		if (zoomIt == null) {
@@ -86,31 +88,57 @@ public class PlayerController : MonoBehaviour {
         {
             controller.Move(motion * Time.deltaTime * walkSpeed);
         }
+        //END MOVEMENT.
 
+        
 
-        if (swipeDetector.getSwipeBool())
+        if (isNearSoldier && latestColide.GetComponentInChildren<HealthBar>().getIsDown() && canMove == true)
+        {
+            Debug.Log("Performing Surgereh");
+            canMove = false;
+            zoomIt.doZoom(latestColide);
+        }
+        //canMove only becomes false when surgery is happening.
+        if (swipeDetector.getSwipeBool() && canMove == false)
         {
             canMove = true;
+            isNearSoldier = false;
+            zoomIt.unZoom();
+            Destroy(latestColide);
         }
 
-        //END MOVEMENT.
     }
 
     void OnTriggerEnter(Collider colide)
     {
         //Debug.Log(" O HI MARK");
-        if (colide.gameObject.tag == "soldierDown")
+        if (colide.gameObject.tag == "soldierDown")// && colide.gameObject.GetComponentInChildren<HealthBar>().getIsDown() && canMove)
         {
-            canMove = false;
-			zoomIt.doZoom(colide.gameObject);
+            latestColide = colide.gameObject;
+            isNearSoldier = true;
         }
 
     }
 
+    /*void OnTriggerStay(Collider colide)
+    {
+        //Debug.Log(" O HI MARK");
+        if (colide.gameObject.tag == "soldierDown" && 
+            colide.gameObject.GetComponentInChildren<HealthBar>().getIsDown()
+            && canMove)
+        {
+            Debug.Log("Performing Surgereh");
+            canMove = false;
+            zoomIt.doZoom(colide.gameObject);
+        }
+    }*/
+
     void OnTriggerExit(Collider colide)
     {
-        zoomIt.unZoom(colide.gameObject);
-        Destroy(colide.gameObject);
+        if (colide.gameObject.tag == "soldierDown")// && colide.gameObject.GetComponentInChildren<HealthBar>().getIsDown() && canMove)
+        {
+            isNearSoldier = true;
+        }
     }
 
 }

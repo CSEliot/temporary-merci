@@ -24,32 +24,34 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //control camera following, doesn't when zooming
-        if (shouldMove)
+        if (shouldMove)// && thisTransform.position.y > 10f)
         {
-            Debug.Log("Moving Camera");
+            //Debug.Log("Moving Camera");
             posX = Mathf.SmoothDamp(thisTransform.position.x, target.position.x, ref velocity.x, smoothTime);
             posZ = Mathf.SmoothDamp(thisTransform.position.z, target.position.z, ref velocity.z, smoothTime);
             thisTransform.position = new Vector3(posX, this.transform.position.y, posZ);
         }
         else
         {
-            Debug.Log("NOT moving camera");
+            //thisTransform.position = oldPos;
+            //Debug.Log("NOT moving camera");
             //this.transform.position = new Vector3(0f,0f,0f);
         }
     }
 
-    public void unZoom(UnityEngine.GameObject myObject)
+    public void unZoom()
     {
         //change camera to back above merci
-        this.transform.position = oldPos;
+        transform.position = oldPos;
+        Debug.Log("Old Position Set: " + oldPos);
         //get camera following again
         shouldMove = true;
         //MOVE THE body back up
-        myObject.transform.GetChild(6).transform.Translate(new Vector3(0, 20f, 0));
+        //myObject.transform.GetChild(6).transform.Translate(new Vector3(0, 20f, 0));
         //reference to arm transform
-        Transform arm = myObject.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(1);
+        //Transform arm = myObject.transform.GetChild(0);
         //makes arm invisible
-        arm.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        //arm.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = false;
     }
 
 
@@ -68,33 +70,28 @@ public class CameraController : MonoBehaviour
 
         //reference to arm transform
         Debug.Log(myObject.transform.name);
-        Debug.Log(myObject.transform.GetChild(6).name);
-        Debug.Log(myObject.transform.GetChild(6).GetChild(0).name);
-        Debug.Log(myObject.transform.GetChild(6).GetChild(0).GetChild(0).name);
-        Debug.Log(myObject.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(1).name);
-
+        Debug.Log(myObject.transform.GetChild(0).name);
 
 		//get arm reference
-        Transform arm = myObject.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(1);
-		//get arm location for camera. Due to offset, some manual modifications had to occur.
-		Vector3 armPos = new Vector3(arm.transform.position.x + 9f , arm.transform.position.y + 1f, arm.transform.position.z + 1f);
+        Transform arm = myObject.transform.GetChild(0);
+		//get arm location for camera. Due to offset, some manual modifications have, to occur.
+        Vector3 armPos = new Vector3(arm.transform.position.x + 0f, arm.transform.position.y + 1.42f, arm.transform.position.z + 14f);// 15.2f);
         //makes arm visible
-        arm.GetComponent<SkinnedMeshRenderer>().enabled = true;
+        arm.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
 
         //move body out of way
         //Debug.Log("This is the body to move: " + myObject.transform.name);
         //move the body away
 		//Debug.Log("Moving body down"); 
 		//myObject.transform.position =  new Vector3(myObject.transform.position.x , myObject.transform.position.y - 7f, myObject.transform.position.z);
-		arm.transform.position = armPos;
+		//arm.transform.position = armPos;
         
         //move camera
 		Debug.Log("This position WAS: " + this.transform.position);
-        this.transform.position = armPos;
+        transform.position = armPos;
 		Debug.Log("This position IS : " + this.transform.position);
         /***while ((thisTransform.position.y >= numTarget+2f))
         {
-
             //Mathf.SmoothDamp(thisTransform.position.y, numTarget, ref velocity.y, smoothTime),
             //Debug.Log("Camera Position is: " + thisTransform.position.y);
             //System.Threading.Thread.Sleep(50);

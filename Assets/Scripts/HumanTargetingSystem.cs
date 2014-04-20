@@ -6,6 +6,8 @@ public class HumanTargetingSystem : MonoBehaviour {
 
     private bool H_isfighting;
     public List<Transform> AlienRegiment { get; set; }
+    int Alientarget;
+    private Transform targetObject;
 
     // Use this for initialization
     void Start()
@@ -22,12 +24,13 @@ public class HumanTargetingSystem : MonoBehaviour {
             chooseRandomTarget();
             H_isfighting = true;
         }
-        //This should occur when your target is dead.
-        //Stopping a fighting.
-        else if (H_isfighting && true /* Fill in for AlienRegiment[Alientarget].gameObject.GetComponent<HealthBar>().Getaliveness();*/)
+        else if (H_isfighting && 
+            targetObject != null && 
+                targetObject.gameObject.GetComponentInChildren<HealthBar>().isDead())
         {
+            Debug.Log("Killing the Alien Target.");
+            Destroy(AlienRegiment[Alientarget].gameObject);
             //H_isfighting = false;
-            Debug.Log("Resetting Alien Target.");
         }
     }
 
@@ -36,12 +39,13 @@ public class HumanTargetingSystem : MonoBehaviour {
     void chooseRandomTarget()
     {
        Debug.Log("Total Aliens: " + AlienRegiment.Count);
-       int Alientarget = Random.Range(0, AlienRegiment.Count -1);
+       Alientarget = Random.Range(0, AlienRegiment.Count -1);
        Debug.Log("Target Alien: " + Alientarget);
 
 
        //tell the alien it's being targetted, this is for you to know roberto!
-       AlienRegiment[Alientarget].gameObject.GetComponent<AlienTargeted>().Increasetargeted();
+       targetObject = AlienRegiment[Alientarget].transform;
+       targetObject.gameObject.GetComponent<AlienTargeted>().Increasetargeted();
        //get THIS guy to set his target to that alien.
        this.gameObject.GetComponent<ShooterController>().setTarget(AlienRegiment[Alientarget].gameObject);
        H_isfighting = true;
