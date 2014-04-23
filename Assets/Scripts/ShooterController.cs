@@ -4,8 +4,8 @@ using System.Collections;
 public class ShooterController : MonoBehaviour {
 	public Rigidbody projectile;
 	public GameObject target;
-	public float burstDelay, bulletDelay, burstTime, fireSpeed;
-	public int burstSize, bulletsFired;
+	public float burstDelay = 0.5f, bulletDelay = 0.1f, burstTime, fireSpeed = 200.0f;
+	public int burstSize = 3, bulletsFired;
 	public bool newTarget;
 	// Use this for initialization
 	void Start () {
