@@ -29,11 +29,16 @@ public class HumanTargetingSystem : MonoBehaviour {
                 targetObject.gameObject.GetComponentInChildren<HealthBar>().isDead())
         {
             Debug.Log("Killing the Alien Target.");
-            Destroy(AlienRegiment[Alientarget].gameObject);
+            AlienRegiment[Alientarget].GetComponent<Animator>().SetBool("isDead", true);
+            Invoke("deleteTarget", 2);
             //H_isfighting = false;
         }
     }
 
+    void deleteTarget()
+    {
+        Destroy(AlienRegiment[Alientarget].gameObject);
+    }
     //This function will find a random target from the size, set his targeted up 1
     //and say that this is targeting something.
     void chooseRandomTarget()

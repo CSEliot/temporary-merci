@@ -7,8 +7,10 @@ public class HealthBar : MonoBehaviour
     private float maxHealth;
     private float currHealth;
     private float damagePerSecond;
+    private float damageDamper;
     private bool isDown;
     private float targetCount;
+    private Animator animator;
     private float lifeFrac;
     private float size;
     //private List<Transform> soldier;
@@ -23,6 +25,7 @@ public class HealthBar : MonoBehaviour
 
         //initialize variables
         damagePerSecond = .001f; // when under fire
+        damageDamper = 0.4f;//1.00f;
         isDown = false;
         size = 1.1f; //referes to the Green child plane.
         maxHealth = size; // bar size, this never changes
@@ -36,6 +39,7 @@ public class HealthBar : MonoBehaviour
      //Don't need to do this, we know what it starts at and can set it manually.
         //size = GameObject.Find("Green").transform.localScale.x;
         //Debug.Log("Size after assigned=" + size);
+        animator = transform.parent.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -46,12 +50,12 @@ public class HealthBar : MonoBehaviour
         if (targetCount >= 1)
         {
             //decrease health
-            currHealth -= (damagePerSecond * targetCount);
+            currHealth -= (damagePerSecond * targetCount)*damageDamper;
 
             //size -= (.1f * targetCount);
             //Debug.Log("My health is: " + currHealth);
            // Debug.Log(this.transform.GetChild(0).name);
-            this.transform.GetChild(0).transform.localScale -= new Vector3((damagePerSecond * targetCount), 0f, 0f);
+            this.transform.GetChild(0).GetChild(0).transform.localScale -= new Vector3((damagePerSecond * targetCount)*damageDamper, 0f, 0f);
 
         }
         else
@@ -65,8 +69,9 @@ public class HealthBar : MonoBehaviour
         //if health = 50;
         if (currHealth <= maxHealth/2f)
         {
-            Debug.Log("OH JEEZ I AM DOWN");
+            //Debug.Log("OH JEEZ I AM DOWN");
             isDown = true;
+            animator.SetBool("isDown", true);
             //set isDown to true
         }
     }
@@ -100,9 +105,11 @@ public class HealthBar : MonoBehaviour
         {
             if (transform.parent.name.Equals("soldier_v2"))
             {
+                animator.SetBool("isDead", true);
                 Application.LoadLevel(2);
                 Debug.Log("OH CRAP I DIED");
                 Destroy(this.gameObject);
+                Invoke("loseScene", 2);
                 return true;
             }
             return true;
@@ -111,6 +118,13 @@ public class HealthBar : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void loseScene()
+    {
+        Application.LoadLevel(2);
+        Debug.Log("OH CRAP I DIED");
+        Destroy(this.gameObject);
     }
 
     private void setTargetCount()

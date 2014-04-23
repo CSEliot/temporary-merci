@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (colide.gameObject.tag == "soldierDown")// && colide.gameObject.GetComponentInChildren<HealthBar>().getIsDown() && canMove)
         {
-            isNearSoldier = true;
+            isNearSoldier = false;
         }
     }
 
