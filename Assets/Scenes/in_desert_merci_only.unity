@@ -1939,13 +1939,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &121181683
@@ -3843,13 +3843,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &214834402
@@ -5644,13 +5644,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &293931802
@@ -13934,13 +13934,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &712873344
@@ -18322,13 +18322,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &956924338
@@ -19516,13 +19516,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1007527460
@@ -24353,13 +24353,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1277002285
@@ -26969,13 +26969,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1418261273
@@ -30483,13 +30483,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1585147917
@@ -30638,13 +30638,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1588712147
@@ -36398,13 +36398,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75984d8a56dbf27488d5979ea7a14dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5400000, guid: 4932315ec4f683444a4da1120b291868, type: 2}
   target: {fileID: 0}
-  burstDelay: 0
-  bulletDelay: 0
+  burstDelay: .75
+  bulletDelay: .150000006
   burstTime: 0
-  fireSpeed: 0
-  burstSize: 0
+  fireSpeed: 100
+  burstSize: 3
   bulletsFired: 0
   newTarget: 0
 --- !u!114 &1922503412
