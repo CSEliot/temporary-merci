@@ -31,13 +31,14 @@ public class HumanTargetingSystem : MonoBehaviour {
             Debug.Log("Killing the Alien Target.");
             AlienRegiment[Alientarget].GetComponent<Animator>().SetBool("isDead", true);
             Invoke("deleteTarget", 2);
-            //H_isfighting = false;
         }
     }
 
     void deleteTarget()
     {
-        Destroy(AlienRegiment[Alientarget].gameObject);
+        //Destroy(AlienRegiment[Alientarget].gameObject);
+        GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().remakeList();
+        
     }
     //This function will find a random target from the size, set his targeted up 1
     //and say that this is targeting something.

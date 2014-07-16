@@ -32,8 +32,10 @@ public class ListingHumes_Aliens : MonoBehaviour {
             Application.LoadLevel(3);
         }
         Debug.Log("Num of soldiers found: " + soldierarray.Length);
+        SoldierRegiment.Clear();
         for (int Q = 0; Q < soldierarray.Length; Q++)
         {
+            
             SoldierRegiment.Add(soldierarray[Q].transform);
         }
        
@@ -43,18 +45,21 @@ public class ListingHumes_Aliens : MonoBehaviour {
             Application.LoadLevel(3);
         }
         Debug.Log("Num of aliens found: " + alienarray.Length);
+        AlienRegiment.Clear();
         for (int Q = 0; Q < alienarray.Length; Q++)
         {
+            
             AlienRegiment.Add(alienarray[Q].transform);
         }
     }
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         for (int Q = 0; Q < alienarray.Length; Q++)
         {
 
             if (alienarray[Q] == null)
             {
+                Debug.Log("Null reference, must mean dead thing! Aleins remake list!");
                 remakeList();
             }
         }
@@ -63,6 +68,7 @@ public class ListingHumes_Aliens : MonoBehaviour {
 
             if (soldierarray[Q] == null)
             {
+                Debug.Log("Null reference, must mean dead thing! Humans remake list!");
                 remakeList();
             }
         }

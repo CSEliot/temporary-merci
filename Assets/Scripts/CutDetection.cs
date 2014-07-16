@@ -16,8 +16,8 @@ public class CutDetection : MonoBehaviour {
 	void Start () {
         ScreenHeight = Screen.height;
         ScreenYCenter = ScreenHeight / 2;
-        Debug.Log("Screen Height is");
-        Debug.Log(ScreenHeight);
+        //Debug.Log("Screen Height is");
+        //Debug.Log(ScreenHeight);
    InTophalf = false;
    InBottomhalf = false;
    //IsCut = false;

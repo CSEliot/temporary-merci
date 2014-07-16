@@ -27,12 +27,8 @@ public class AlienTargetingSystem : MonoBehaviour
         }
         else if (A_isfighting && targetObject == null)
         {
-            
+            GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().remakeList();
             chooseRandomTarget();
-            A_isfighting = true;
-            //Debug.Log("A HUMAN DIED GAME OVER");
-            //Application.LoadLevel(2);
-            //A_isfighting = false;
             //Debug.Log("Resetting Human target.");
         }
         else
@@ -46,11 +42,9 @@ public class AlienTargetingSystem : MonoBehaviour
     //and say that this is targeting something.
     void chooseRandomTarget()
     {
-        GameObject.Find("List_creator").GetComponent<ListingHumes_Aliens>().remakeList();
         Debug.Log("Total Humans: " + HumanRegiment.Count);
         int Humantarget = Random.Range(0, HumanRegiment.Count - 1);
         Debug.Log("Target Human: " + Humantarget);
-
         targetObject = HumanRegiment[Humantarget].transform;
         targetObject.gameObject.GetComponent<HumanTargeted>().Increasetargeted();
         //get THIS guy to set his target to that alien.

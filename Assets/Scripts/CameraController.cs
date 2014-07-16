@@ -70,10 +70,10 @@ public class CameraController : MonoBehaviour
 
         //reference to arm transform
         Debug.Log(myObject.transform.name);
-        Debug.Log(myObject.transform.GetChild(0).name);
+        Debug.Log("Child 4 of soldier_v2 is "+myObject.transform.GetChild(3).name);
 
 		//get arm reference
-        Transform arm = myObject.transform.GetChild(0);
+        Transform arm = myObject.transform.GetChild(3);
 		//get arm location for camera. Due to offset, some manual modifications have, to occur.
         Vector3 armPos = new Vector3(arm.transform.position.x + 0f, arm.transform.position.y + 1.42f, arm.transform.position.z + 14f);// 15.2f);
         //makes arm visible

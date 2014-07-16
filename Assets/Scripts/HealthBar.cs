@@ -30,7 +30,7 @@ public class HealthBar : MonoBehaviour
         size = 1.1f; //referes to the Green child plane.
         maxHealth = size; // bar size, this never changes
         currHealth = size; //transform bar size
-        Debug.Log("Parent name of this health bar is: " + transform.parent.name);
+        //Debug.Log("Parent name of this health bar is: " + transform.parent.name);
 
         //see who is being targetted and set the target size
         setTargetCount();
@@ -112,6 +112,7 @@ public class HealthBar : MonoBehaviour
                 Invoke("loseScene", 2);
                 return true;
             }
+            //if it's the alien, return true.
             return true;
         }
         else
@@ -122,9 +123,10 @@ public class HealthBar : MonoBehaviour
 
     void loseScene()
     {
+        Destroy(this.gameObject);
         Application.LoadLevel(2);
         Debug.Log("OH CRAP I DIED");
-        Destroy(this.gameObject);
+        
     }
 
     private void setTargetCount()
@@ -133,7 +135,7 @@ public class HealthBar : MonoBehaviour
         {
 
             targetCount = transform.parent.gameObject.GetComponent<HumanTargeted>().H_istargeted;
-            Debug.Log("Target after assigned=" + targetCount);
+            //Debug.Log("Target after assigned=" + targetCount);
 
             //Not sure what this is for other than for debugging.
             //soldier = getScript.getAlienRegiment();
